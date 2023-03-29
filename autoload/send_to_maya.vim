@@ -87,8 +87,8 @@ if code_type == "python":
         code_type = "{1}"
 
         with open(temp, "r") as f:
-            exec(f, __main__.__dict__, __main__.__dict__)
-        os.remove(temp)
+            exec("".join(f.readlines()), __main__.__dict__, __main__.__dict__)
+        # os.remove(temp)
     '''.format(tmp_path, code_type))
     command = command.replace("\\", "/").replace('"', r'\"').replace("\n", "\\n")
     command = 'python("{}")'.format(command)
